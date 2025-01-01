@@ -9,7 +9,6 @@ import type { LinksFunction } from "@remix-run/node";
 
 import "./styles/tailwind.css";
 import { CustomThemeProvider } from "./context/ThemeContext";
-import DarkModeToggle from "./components/DarkModeToggle";
 import { Provider as StyletronProvider } from "styletron-react";
 import { styletron } from "./styletron";
 import Header from "./components/Header";

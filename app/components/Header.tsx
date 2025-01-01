@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   HeaderNavigation,
   ALIGN,
@@ -6,7 +5,6 @@ import {
   StyledNavigationItem
 } from "baseui/header-navigation";
 import { StyledLink } from "baseui/link";
-import DarkModeToggle from "./DarkModeToggle";
 import { Button } from "baseui/button";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
@@ -23,16 +21,21 @@ export default () => {
             </h1>
         </StyledNavigationItem>
       </StyledNavigationList>
-      <StyledNavigationList $align={ALIGN.center} />
       <StyledNavigationList $align={ALIGN.center}>
         <StyledNavigationItem>
           <StyledLink href="/">
-            Home
+          <div className="h-[35px] w-[35px]">
+            <img src="/icons8-home-light.svg" alt="Home" className="dark:hidden"/>
+            <img src="/icons8-home-dark.svg" alt="Home" className="hidden dark:block"/>
+          </div>
           </StyledLink>
         </StyledNavigationItem>
         <StyledNavigationItem>
           <StyledLink href="https://github.com/eiei114/im-ts-frontend-template">
-            GitHub
+          <div className="h-[50px] w-[50px]">
+            <img src="/icons8-github-light.svg" alt="GitHub" className="dark:hidden"/>
+            <img src="/icons8-github-dark.svg" alt="GitHub" className="hidden dark:block"/>
+          </div>
           </StyledLink>
         </StyledNavigationItem>
         <StyledNavigationItem>
