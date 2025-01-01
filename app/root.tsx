@@ -8,9 +8,9 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 
 import "./styles/tailwind.css";
+import { ThemeProvider } from "./context/ThemeContext";
+import DarkModeToggle from "./components/DarkModeToggle"; // 追加
 
-// ここでは、ページのリンクを定義している。
-// ページのリンクは、ページのヘッダーやフッターなどの共通の要素を定義する。
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -24,8 +24,6 @@ export const links: LinksFunction = () => [
   },
 ];
 
-// ここでは、ページのレイアウトを定義している。
-// ページのレイアウトは、ページのヘッダーやフッターなどの共通の要素を定義する。
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -36,9 +34,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+        <ThemeProvider>
+          <header className="p-4">
+            <DarkModeToggle />
+          </header>
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </ThemeProvider>
       </body>
     </html>
   );
