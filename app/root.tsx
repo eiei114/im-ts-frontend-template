@@ -9,7 +9,9 @@ import type { LinksFunction } from "@remix-run/node";
 
 import "./styles/tailwind.css";
 import { ThemeProvider } from "./context/ThemeContext";
-import DarkModeToggle from "./components/DarkModeToggle"; // 追加
+import DarkModeToggle from "./components/DarkModeToggle";
+import { Provider as StyletronProvider } from "styletron-react";
+import { styletron } from "./styletron";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -34,14 +36,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <StyletronProvider value={styletron}>
         <ThemeProvider>
-          <header className="p-4">
-            <DarkModeToggle />
-          </header>
-          {children}
-          <ScrollRestoration />
-          <Scripts />
-        </ThemeProvider>
+            <header className="p-4">
+              <DarkModeToggle />
+            </header>
+            {children}
+            <ScrollRestoration />
+            <Scripts />
+          </ThemeProvider>
+        </StyletronProvider>
       </body>
     </html>
   );
