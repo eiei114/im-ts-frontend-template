@@ -1,4 +1,5 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useState, useEffect, ReactNode } from "react";
+import { LightTheme, DarkTheme, ThemeProvider } from "baseui";
 
 interface ThemeContextType {
   darkMode: boolean;
@@ -10,7 +11,7 @@ export const ThemeContext = createContext<ThemeContextType>({
   toggleDarkMode: () => {},
 });
 
-export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+export const CustomThemeProvider = ({ children }: { children: ReactNode }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -44,8 +45,10 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeProvider theme={darkMode ? DarkTheme : LightTheme}>
+      <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
+        {children}
+      </ThemeContext.Provider>
+    </ThemeProvider>
   );
 };

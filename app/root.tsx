@@ -8,7 +8,7 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 
 import "./styles/tailwind.css";
-import { ThemeProvider } from "./context/ThemeContext";
+import { CustomThemeProvider } from "./context/ThemeContext";
 import DarkModeToggle from "./components/DarkModeToggle";
 import { Provider as StyletronProvider } from "styletron-react";
 import { styletron } from "./styletron";
@@ -37,14 +37,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <StyletronProvider value={styletron}>
-        <ThemeProvider>
-            <header className="p-4">
-              <DarkModeToggle />
-            </header>
-            {children}
-            <ScrollRestoration />
-            <Scripts />
-          </ThemeProvider>
+        <CustomThemeProvider>
+          <header className="p-4">
+            <DarkModeToggle />
+          </header>
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+          </CustomThemeProvider>
         </StyletronProvider>
       </body>
     </html>
