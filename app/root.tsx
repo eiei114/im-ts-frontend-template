@@ -12,6 +12,7 @@ import { CustomThemeProvider } from "./context/ThemeContext";
 import DarkModeToggle from "./components/DarkModeToggle";
 import { Provider as StyletronProvider } from "styletron-react";
 import { styletron } from "./styletron";
+import Header from "./components/Header";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -38,9 +39,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <StyletronProvider value={styletron}>
         <CustomThemeProvider>
-          <header className="p-4">
-            <DarkModeToggle />
-          </header>
+          <Header />
           {children}
           <ScrollRestoration />
           <Scripts />
