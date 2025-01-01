@@ -1,5 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 
+// ここでは、ページのメタデータを定義している。
+// ページのメタデータは、ページのタイトルやディスクリプションなどの情報を定義する。
 export const meta: MetaFunction = () => {
   return [
     { title: "New Remix App" },

@@ -23,6 +23,14 @@ module.exports = {
 
   // Base config
   extends: ["eslint:recommended"],
+  plugins: [
+    "baseui",
+  ],
+  rules: {
+    "baseui/deprecated-theme-api": "warn",
+    "baseui/deprecated-component-api": "warn",
+    "baseui/no-deep-imports": "warn",
+  },
 
   overrides: [
     // React

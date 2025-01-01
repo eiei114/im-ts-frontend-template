@@ -7,8 +7,10 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
-import "./tailwind.css";
+import "./styles/tailwind.css";
 
+// ここでは、ページのリンクを定義している。
+// ページのリンクは、ページのヘッダーやフッターなどの共通の要素を定義する。
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -22,6 +24,8 @@ export const links: LinksFunction = () => [
   },
 ];
 
+// ここでは、ページのレイアウトを定義している。
+// ページのレイアウトは、ページのヘッダーやフッターなどの共通の要素を定義する。
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
