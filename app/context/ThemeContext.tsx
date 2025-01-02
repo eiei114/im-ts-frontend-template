@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect, ReactNode } from "react";
-import { LightTheme, DarkTheme, ThemeProvider } from "baseui";
+import { createContext, useState, useEffect, ReactNode } from 'react';
+import { LightTheme, DarkTheme, ThemeProvider } from 'baseui';
 
 interface ThemeContextType {
   darkMode: boolean;
@@ -15,18 +15,20 @@ export const CustomThemeProvider = ({ children }: { children: ReactNode }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("darkMode");
+    const storedTheme = localStorage.getItem('darkMode');
     if (storedTheme) {
-      setDarkMode(storedTheme === "true");
-      if (storedTheme === "true") {
-        document.documentElement.classList.add("dark");
+      setDarkMode(storedTheme === 'true');
+      if (storedTheme === 'true') {
+        document.documentElement.classList.add('dark');
       }
     } else {
       // システムのカラースキームを取得
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const prefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches;
       setDarkMode(prefersDark);
       if (prefersDark) {
-        document.documentElement.classList.add("dark");
+        document.documentElement.classList.add('dark');
       }
     }
   }, []);
@@ -34,11 +36,11 @@ export const CustomThemeProvider = ({ children }: { children: ReactNode }) => {
   const toggleDarkMode = () => {
     setDarkMode((prev) => {
       const newMode = !prev;
-      localStorage.setItem("darkMode", newMode.toString());
+      localStorage.setItem('darkMode', newMode.toString());
       if (newMode) {
-        document.documentElement.classList.add("dark");
+        document.documentElement.classList.add('dark');
       } else {
-        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.remove('dark');
       }
       return newMode;
     });
