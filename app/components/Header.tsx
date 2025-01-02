@@ -7,12 +7,9 @@ import {
 import { Button } from 'baseui/button';
 import { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
-import { useNavigate } from '@remix-run/react';
-import { ButtonGroup } from 'baseui/button-group';
+
 export default () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
-  const navigate = useNavigate();
-
   return (
     <HeaderNavigation>
       <StyledNavigationList $align={ALIGN.left}>
