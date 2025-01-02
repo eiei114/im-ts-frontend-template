@@ -7,7 +7,7 @@ import {
 import { Button } from 'baseui/button';
 import { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
-
+import { StyledLink } from 'baseui/link';
 export default () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   return (
@@ -17,24 +17,16 @@ export default () => {
           Template App
         </StyledNavigationItem>
       </StyledNavigationList>
+      <StyledNavigationList $align={ALIGN.left}>
+        <StyledNavigationItem>
+            <StyledLink href="/">Home</StyledLink>
+        </StyledNavigationItem>
+        <StyledNavigationItem>
+            <StyledLink href="/about">About</StyledLink>
+        </StyledNavigationItem>
+      </StyledNavigationList>
       <StyledNavigationList $align={ALIGN.center} />
       <StyledNavigationList $align={ALIGN.right}>
-        <StyledNavigationItem>
-          <Button onClick={() => (window.location.href = '/')}>
-            <div className="h-[35px] w-[35px]">
-              <img
-                src="/icons8-home-light.svg"
-                alt="Home"
-                className="hidden dark:block"
-              />
-              <img
-                src="/icons8-home-dark.svg"
-                alt="Home"
-                className="block dark:hidden"
-              />
-            </div>
-          </Button>
-        </StyledNavigationItem>
         <StyledNavigationItem>
           <Button
             onClick={() =>
