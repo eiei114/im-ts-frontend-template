@@ -1,0 +1,40 @@
+@startuml architecture
+
+object Backend {
+    エンドポイントURL
+}
+object LocalStorage {
+    ローカルストレージ
+}
+
+object Components {
+    UIの部品
+}
+object Context {
+    コンテキスト
+}
+object Hooks {
+    フック
+}
+object Routes {
+    ルーティング
+}
+object Services {
+    サービス
+}
+
+Routes --> Components
+Routes --> Context
+
+Components --> Context
+Components --> Hooks
+Components --> Services
+
+Hooks --> Context
+
+Context --> Services
+
+Services --> Backend
+Services --> LocalStorage
+
+@enduml

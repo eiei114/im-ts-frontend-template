@@ -9,7 +9,7 @@ import { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import { StyledLink } from 'baseui/link';
 export default () => {
-  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+  const { toggleDarkMode } = useContext(ThemeContext);
   return (
     <HeaderNavigation>
       <StyledNavigationList $align={ALIGN.left}>

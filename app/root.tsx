@@ -41,11 +41,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <CustomThemeProvider>
             <Header />
             {children}
-            <ScrollRestoration />
-            <Scripts />
             <Footer />
           </CustomThemeProvider>
         </StyletronProvider>
+        <ScrollRestoration />
+            <Scripts />
       </body>
     </html>
   );
