@@ -3,6 +3,7 @@ import NameInput from '~/components/NameInput';
 import NumberInput from '~/components/NumberInput';
 import { useContext } from 'react';
 import { UserSecretContext } from '~/context/UserSecretContext';
+import DeleteUserButton from '~/components/DeleteUserButton';
 
 // ここでは、ページのメタデータを定義している。
 // ページのメタデータは、ページのタイトルやディスクリプションなどの情報を定義する。
@@ -30,6 +31,11 @@ export default function Index() {
         <div className="flex space-x-4">
           <NumberInput />
         </div>
+        {token && (
+          <div className="flex space-x-4">
+            <DeleteUserButton />
+          </div>
+        )}
       </div>
     </div>
   );
