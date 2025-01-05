@@ -39,6 +39,26 @@ Make sure to deploy the output of `npm run build`
 
 This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
 
+## Commands
+
+Start the development server:
+
+```sh
+pnpm run dev
+```
+
+Build the app for production:
+
+```sh
+pnpm run build
+```
+
+Run the app in production mode:
+
+```sh
+pnpm run start
+```
+
 ## Icon
 
 - [icons8](https://icons8.jp/)

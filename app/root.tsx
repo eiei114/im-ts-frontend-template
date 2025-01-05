@@ -45,7 +45,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </CustomThemeProvider>
         </StyletronProvider>
         <ScrollRestoration />
-            <Scripts />
+        <Scripts />
       </body>
     </html>
   );
