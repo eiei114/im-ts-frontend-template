@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserSecretContext } from '../context/UserSecretContext';
 
 export const useNameInput = (initialValue: string = '') => {
+    const { setUserToken } = useContext(UserSecretContext);
     const [value, setValue] = useState(initialValue);
-    const [token, setToken] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -35,7 +36,7 @@ export const useNameInput = (initialValue: string = '') => {
             }
 
             const data = await response.json();
-            setToken(data.token);
+            setUserToken(data.token);
             setValue('');
             console.log('受け取ったトークン:', data.token);
         } catch (err) {
@@ -47,7 +48,6 @@ export const useNameInput = (initialValue: string = '') => {
 
     return {
         value,
-        token,
         isLoading,
         error,
         handleChange,

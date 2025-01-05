@@ -1,9 +1,12 @@
 import { Button } from 'baseui/button';
 import { Input } from 'baseui/input';
 import { useNameInput } from '../hooks/useNameInput';
+import { useContext } from 'react';
+import { UserSecretContext } from '../context/UserSecretContext';
 
 const NameInput = () => {
-    const { value, token, isLoading, error, handleChange, handleSubmit } = useNameInput();
+    const { token } = useContext(UserSecretContext);
+    const { value, isLoading, error, handleChange, handleSubmit } = useNameInput();
 
     return (
         <div className="flex flex-col space-y-4">
