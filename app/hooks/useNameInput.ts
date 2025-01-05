@@ -12,6 +12,9 @@ export const useNameInput = (initialValue: string = '') => {
             console.log('入力値が空です');
         } else {
             setValue('');
+            // todo: バックエンドに送信
+            // todo: バックエンドから結果を受け取る(Keyを受け取る)
+            // todo: 結果を表示
         }
     };
 
