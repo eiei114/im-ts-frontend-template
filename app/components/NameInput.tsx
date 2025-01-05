@@ -3,20 +3,31 @@ import { Input } from 'baseui/input';
 import { useNameInput } from '../hooks/useNameInput';
 
 const NameInput = () => {
-    const { value, handleChange, handleSubmit } = useNameInput();
+    const { value, token, isLoading, error, handleChange, handleSubmit } = useNameInput();
 
     return (
-        <div className="flex space-x-4">
-            <Input
-                placeholder="Enter your name"
-                value={value}
-                onChange={(e) => handleChange(e.target.value)}
-                positive={value.length > 0}
-                error={value.length > 0}
-            />
-            <Button onClick={handleSubmit}>
-                Register
-            </Button>
+        <div className="flex flex-col space-y-4">
+            <div className="flex space-x-4">
+                <Input
+                    placeholder="Enter your name"
+                    value={value}
+                    onChange={(e) => handleChange(e.target.value)}
+                    error={!!error}
+                    disabled={isLoading}
+                />
+                <Button
+                    onClick={handleSubmit}
+                    isLoading={isLoading}
+                >
+                    Register
+                </Button>
+            </div>
+            {error && <div className="text-red-500">{error}</div>}
+            {token && (
+                <div className="text-green-500">
+                    トークン: {token}
+                </div>
+            )}
         </div>
     );
 };
