@@ -28,9 +28,11 @@ export default function Index() {
             <NameInput />
           </div>
         )}
-        <div className="flex space-x-4">
-          <NumberInput />
-        </div>
+        {token && (
+          <div className="flex space-x-4">
+            <NumberInput />
+          </div>
+        )}
         {token && (
           <div className="flex space-x-4">
             <DeleteUserButton />
