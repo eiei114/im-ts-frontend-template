@@ -1,21 +1,49 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserSecretContext } from '../context/UserSecretContext';
 
 export const useNumberInput = (initialValue: string = '') => {
     const [value, setValue] = useState(initialValue);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const { token } = useContext(UserSecretContext);
 
     const handleChange = (newValue: string) => {
         setValue(newValue);
+        setError(null);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (!/^\d+$/.test(value)) {
-            console.log('数字ではありません');
-        } else {
-            // 数字だったら入力値を削除
+            setError('数字のみを入力してください');
+            return null;
+        }
+
+        setError(null);
+        setIsLoading(true);
+
+        try {
+            const response = await fetch('/user/count', {
+                method: 'POST',
+                headers: {
+                    'accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'x-token': token || ''
+                },
+                body: JSON.stringify({ count: parseInt(value, 10) })
+            });
+
+            if (!response.ok) {
+                throw new Error('APIリクエストが失敗しました');
+            }
+
+            const data = await response.json();
             setValue('');
-            // todo: バックエンドに送信
-            // todo: バックエンドから結果を受け取る
-            // todo: 結果を表示
+            return data;
+        } catch (err) {
+            setError(err instanceof Error ? err.message : '予期せぬエラーが発生しました');
+            return null;
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -24,6 +52,8 @@ export const useNumberInput = (initialValue: string = '') => {
 
     return {
         value,
+        isLoading,
+        error,
         handleChange,
         handleSubmit,
         isValid,
