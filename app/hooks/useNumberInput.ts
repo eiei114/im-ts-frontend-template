@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { UserSecretContext } from '../context/UserSecretContext';
 
-export const useNumberInput = (initialValue: string = '') => {
+export const useNumberInput = (initialValue: string = '', onSuccess?: () => void) => {
     const [value, setValue] = useState(initialValue);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -34,10 +34,16 @@ export const useNumberInput = (initialValue: string = '') => {
 
             if (!response.ok) {
                 throw new Error('APIリクエストが失敗しました');
+            } else {
+                console.log('success onSuccess is called ', value);
             }
 
             const data = await response.json();
+            console.log('data', data);
             setValue('');
+            if (onSuccess) {
+                onSuccess();
+            }
             return data;
         } catch (err) {
             setError(err instanceof Error ? err.message : '予期せぬエラーが発生しました');

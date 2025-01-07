@@ -1,12 +1,10 @@
 import type { MetaFunction } from '@remix-run/node';
 import NameInput from '~/components/NameInput';
-import NumberInput from '~/components/NumberInput';
 import { useContext } from 'react';
 import { UserSecretContext } from '~/context/UserSecretContext';
 import DeleteUserButton from '~/components/DeleteUserButton';
+import CountSyncComponent from '~/components/CountSyncComponent';
 
-// ここでは、ページのメタデータを定義している。
-// ページのメタデータは、ページのタイトルやディスクリプションなどの情報を定義する。
 export const meta: MetaFunction = () => {
   return [
     { title: 'New Remix App' },
@@ -29,14 +27,12 @@ export default function Index() {
           </div>
         )}
         {token && (
-          <div className="flex space-x-4">
-            <NumberInput />
-          </div>
-        )}
-        {token && (
-          <div className="flex space-x-4">
-            <DeleteUserButton />
-          </div>
+          <>
+            <CountSyncComponent />
+            <div className="flex space-x-4">
+              <DeleteUserButton />
+            </div>
+          </>
         )}
       </div>
     </div>
