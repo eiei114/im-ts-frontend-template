@@ -7,11 +7,13 @@ export const useNameInput = (initialValue: string = '') => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    // 関数
     const handleChange = (newValue: string) => {
         setValue(newValue);
         setError(null);
     };
 
+    // 関数
     const handleSubmit = async () => {
         if (value.length === 0) {
             setError('入力値が空です');
@@ -47,10 +49,15 @@ export const useNameInput = (initialValue: string = '') => {
     };
 
     return {
+        // リアクティブプロパティ
         value,
+        // リアクティブプロパティ
         isLoading,
+        // リアクティブプロパティ
         error,
+        // 関数
         handleChange,
+        // 関数
         handleSubmit
     };
 };

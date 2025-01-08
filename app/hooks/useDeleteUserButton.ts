@@ -37,8 +37,11 @@ export const useDeleteUserButton = () => {
     };
 
     return {
+        // リアクティブプロパティ
         isLoading,
+        // リアクティブプロパティ
         error,
+        // 関数
         handleDelete
     };
 };

@@ -2,28 +2,31 @@ import { Button } from 'baseui/button';
 import { Input } from 'baseui/input';
 import { useNumberInput } from '~/hooks/useNumberInput';
 import { useUserInfoText } from '~/hooks/useUserInfoText';
-
+import { useState, useEffect } from 'react';
 const CountSyncComponent = () => {
-    const { userInfo, error, refetch } = useUserInfoText();
-    const { value, handleChange, handleSubmit, isValid, hasError } = useNumberInput('', refetch);
+    const { userInfo, error } = useUserInfoText();
+    const { value, handleChange, handleSubmit, isValid, hasError } = useNumberInput('');
+    const [count, setCount] = useState(0);
 
     const handleButtonClick = async () => {
-        console.log('handleButtonClick');
         const result = await handleSubmit();
         if (result) {
-            refetch(); // ユーザー情報を再取得
-            console.log('カウントが更新されました');
+            setCount(result.count);
         } else {
             console.log('エラーが発生しました');
         }
     };
+
+    useEffect(() => {
+        setCount(userInfo?.count || 0);
+    }, [userInfo]);
 
     return (
         <div className="flex flex-col items-center space-y-4">
             {userInfo && (
                 <div className="text-gray-800 dark:text-gray-200 text-center">
                     <p>名前: {userInfo.name}</p>
-                    <p>カウント: {userInfo.count}</p>
+                    <p>カウント: {count}</p>
                 </div>
             )}
             <div className="flex space-x-4">

@@ -13,6 +13,11 @@ export const useNumberInput = (initialValue: string = '', onSuccess?: () => void
     };
 
     const handleSubmit = async () => {
+        if (value.length === 0) {
+            setError('入力値が空です');
+            return null;
+        }
+
         if (!/^\d+$/.test(value)) {
             setError('数字のみを入力してください');
             return null;
