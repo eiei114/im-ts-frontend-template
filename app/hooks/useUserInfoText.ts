@@ -11,8 +11,8 @@ export const useUserInfoText = () => {
         fetchUserInfo();
     }, [token]);
 
-
     const fetchUserInfo = async () => {
+        console.log('fetchUserInfo');
         if (!token) {
             setError('ユーザーが存在しません');
             return;
@@ -34,6 +34,7 @@ export const useUserInfoText = () => {
             const data = await response.json();
             setName(data.name);
             setCount(data.count);
+            console.log(data);
         } catch (err) {
             setError(err instanceof Error ? err.message : '予期せぬエラーが発生しました');
         }

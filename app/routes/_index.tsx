@@ -4,6 +4,8 @@ import { useContext } from 'react';
 import { UserSecretContext } from '~/contexts/UserSecretContext';
 import DeleteUserButton from '~/components/DeleteUserButton';
 import CountSyncComponent from '~/components/CountSyncComponent';
+import NumberInput from '~/components/NumberInput';
+import UserInfo from '~/components/UserInfo';
 
 export const meta: MetaFunction = () => {
   return [
@@ -28,7 +30,8 @@ export default function Index() {
         )}
         {token && (
           <>
-            <CountSyncComponent />
+            <UserInfo />
+            <NumberInput />
             <div className="flex space-x-4">
               <DeleteUserButton />
             </div>
