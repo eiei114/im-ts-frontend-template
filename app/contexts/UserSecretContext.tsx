@@ -15,6 +15,7 @@ export const UserSecretContext = createContext<UserSecretContextType>({
 export const UserSecretProvider = ({ children }: { children: ReactNode }) => {
     const [token, setToken] = useState<string | null>(null);
 
+    // 初期化
     useEffect(() => {
         const storedToken = localStorage.getItem('userToken');
         if (storedToken) {
@@ -22,11 +23,13 @@ export const UserSecretProvider = ({ children }: { children: ReactNode }) => {
         }
     }, []);
 
+    // トークンを設定関数
     const setUserToken = (newToken: string) => {
         localStorage.setItem('userToken', newToken);
         setToken(newToken);
     };
 
+    // トークンを削除関数
     const clearToken = () => {
         localStorage.removeItem('userToken');
         setToken(null);

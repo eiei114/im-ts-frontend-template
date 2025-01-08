@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { UserSecretContext } from '../context/UserSecretContext';
+import { UserSecretContext } from '../contexts/UserSecretContext';
 
 export const useDeleteUserButton = () => {
     const { token, clearToken } = useContext(UserSecretContext);

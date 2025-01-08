@@ -1,20 +1,22 @@
 import { useContext, useEffect, useState } from 'react';
-import { UserSecretContext } from '../context/UserSecretContext';
-
-interface UserInfo {
-    id: string;
-    name: string;
-    count: number;
-}
+import { UserSecretContext } from '../contexts/UserSecretContext';
+import { UserInformationContext } from '../contexts/UserInformationContext';
 
 export const useUserInfoText = () => {
     const { token } = useContext(UserSecretContext);
-    const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+    const { setName, setCount } = useContext(UserInformationContext);
     const [error, setError] = useState<string | null>(null);
 
+    useEffect(() => {
+        fetchUserInfo();
+    }, [token]);
+
+
     const fetchUserInfo = async () => {
-        console.log('fetchUserInfo');
-        if (!token) return;
+        if (!token) {
+            setError('ユーザーが存在しません');
+            return;
+        }
 
         try {
             const response = await fetch('/user/get', {
@@ -30,20 +32,14 @@ export const useUserInfoText = () => {
             }
 
             const data = await response.json();
-            setUserInfo(data);
-            console.log('userInfo', data);
+            setName(data.name);
+            setCount(data.count);
         } catch (err) {
             setError(err instanceof Error ? err.message : '予期せぬエラーが発生しました');
         }
     };
 
-    useEffect(() => {
-        fetchUserInfo();
-    }, [token]);
-
     return {
-        userInfo,
         error,
-        refetch: fetchUserInfo
     };
 };

@@ -1,7 +1,7 @@
 import type { MetaFunction } from '@remix-run/node';
 import NameInput from '~/components/NameInput';
 import { useContext } from 'react';
-import { UserSecretContext } from '~/context/UserSecretContext';
+import { UserSecretContext } from '~/contexts/UserSecretContext';
 import DeleteUserButton from '~/components/DeleteUserButton';
 import CountSyncComponent from '~/components/CountSyncComponent';
 

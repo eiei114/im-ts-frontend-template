@@ -6,7 +6,7 @@ import {
 } from 'baseui/header-navigation';
 import { Button } from 'baseui/button';
 import { useContext } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
+import { ThemeContext } from '../contexts/ThemeContext';
 import { StyledLink } from 'baseui/link';
 export default () => {
   const { toggleDarkMode } = useContext(ThemeContext);
@@ -19,10 +19,10 @@ export default () => {
       </StyledNavigationList>
       <StyledNavigationList $align={ALIGN.left}>
         <StyledNavigationItem>
-            <StyledLink href="/">Home</StyledLink>
+          <StyledLink href="/">Home</StyledLink>
         </StyledNavigationItem>
         <StyledNavigationItem>
-            <StyledLink href="/about">About</StyledLink>
+          <StyledLink href="/about">About</StyledLink>
         </StyledNavigationItem>
       </StyledNavigationList>
       <StyledNavigationList $align={ALIGN.center} />

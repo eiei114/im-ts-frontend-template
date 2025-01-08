@@ -2,33 +2,27 @@ import { Button } from 'baseui/button';
 import { Input } from 'baseui/input';
 import { useNumberInput } from '~/hooks/useNumberInput';
 import { useUserInfoText } from '~/hooks/useUserInfoText';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { UserInformationContext } from '~/contexts/UserInformationContext';
 const CountSyncComponent = () => {
-    const { userInfo, error } = useUserInfoText();
+    const { count, name } = useContext(UserInformationContext);
+    const { error } = useUserInfoText();
     const { value, handleChange, handleSubmit, isValid, hasError } = useNumberInput('');
-    const [count, setCount] = useState(0);
 
     const handleButtonClick = async () => {
         const result = await handleSubmit();
         if (result) {
-            setCount(result.count);
         } else {
             console.log('エラーが発生しました');
         }
     };
 
-    useEffect(() => {
-        setCount(userInfo?.count || 0);
-    }, [userInfo]);
-
     return (
         <div className="flex flex-col items-center space-y-4">
-            {userInfo && (
-                <div className="text-gray-800 dark:text-gray-200 text-center">
-                    <p>名前: {userInfo.name}</p>
-                    <p>カウント: {count}</p>
-                </div>
-            )}
+            <div className="text-gray-800 dark:text-gray-200 text-center">
+                <p>名前: {name}</p>
+                <p>カウント: {count}</p>
+            </div>
             <div className="flex space-x-4">
                 <Input
                     placeholder="Numbers only"

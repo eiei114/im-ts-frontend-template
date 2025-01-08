@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { UserSecretContext } from '../context/UserSecretContext';
+import { UserSecretContext } from '../contexts/UserSecretContext';
 
 export const useNameInput = (initialValue: string = '') => {
     const { setUserToken } = useContext(UserSecretContext);

@@ -1,11 +1,12 @@
 import { useState, useContext } from 'react';
-import { UserSecretContext } from '../context/UserSecretContext';
-
+import { UserSecretContext } from '../contexts/UserSecretContext';
+import { UserInformationContext } from '../contexts/UserInformationContext';
 export const useNumberInput = (initialValue: string = '', onSuccess?: () => void) => {
     const [value, setValue] = useState(initialValue);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const { token } = useContext(UserSecretContext);
+    const { setCount } = useContext(UserInformationContext);
 
     const handleChange = (newValue: string) => {
         setValue(newValue);
@@ -44,7 +45,7 @@ export const useNumberInput = (initialValue: string = '', onSuccess?: () => void
             }
 
             const data = await response.json();
-            console.log('data', data);
+            setCount(data.count);
             setValue('');
             if (onSuccess) {
                 onSuccess();

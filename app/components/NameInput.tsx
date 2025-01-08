@@ -2,7 +2,7 @@ import { Button } from 'baseui/button';
 import { Input } from 'baseui/input';
 import { useNameInput } from '../hooks/useNameInput';
 import { useContext } from 'react';
-import { UserSecretContext } from '../context/UserSecretContext';
+import { UserSecretContext } from '../contexts/UserSecretContext';
 
 const NameInput = () => {
     const { token } = useContext(UserSecretContext);
