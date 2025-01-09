@@ -43,59 +43,57 @@ Services --> LocalStorage
 @startuml hook_and_context
 
 namespace Root {
-    object index
+    object index {
+        ※ページのルート
+    }
 }
 
 namespace Contexts {
-    object SampleProvider
-    object SampleContext
+    object SampleProvider {
+        ※コンポーネントにコンテキストを渡す
+        ※コンテキストを共有する範囲を指定
+    }
+    object SampleContext {
+        ※グローバルなデータを管理
+        ※複数のページやコンポーネントで
+        ※共有したいデータ管理
+    }
 }
 
 namespace Components {
     object SampleComponent {
-        ※コントローラー兼ビュー
-        object useSample
-        readonly object useContext
+        ※読み取った値からHTMLを更新
+        ※ButtonなどからHookにあるコマンドを実行
+        object readonly useSample
+        object readonly useContext
         object HTML 
-    }
-    object SampleComponent2 {
-        ※コントローラー兼ビュー
-        object useSample2
-        readonly object useContext
-        object HTML
-    }
-    object SampleComponent3 {
-        ※コントローラー兼ビュー
-        object useSample3
-        readonly object useContext
-        object HTML
     }
 }
 
 namespace Hooks {
-    object useSample
-    object useSample2
-    object useSample3
+    object useSample {
+        ※ロジック担当
+    }
+}
+
+namespace Api {
+    object SampleApi {
+        ※バックエンドとの通信など
+        ※外部のサービスとの通信
+    }
 }
 
 index -down-> SampleComponent
-index -down-> SampleComponent2
-index -down-> SampleComponent3
+
 index -up-> SampleProvider
 
 SampleProvider -up-> SampleContext
 
-SampleComponent -up-> useSample
-SampleComponent2 -up-> useSample2
-SampleComponent3 -up-> useSample3
-
-SampleComponent -up-> SampleContext
-SampleComponent2 -up-> SampleContext
-SampleComponent3 -up-> SampleContext
+SampleComponent -up-> useSample : 値の読み取りandコマンド実行
+SampleComponent -up-> SampleContext : 値の読み取り
 
 useSample -up-> SampleContext
-useSample2 -up-> SampleContext
-useSample3 -up-> SampleContext
+useSample -up-> SampleApi
 
 @enduml
 
