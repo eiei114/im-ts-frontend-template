@@ -38,3 +38,57 @@ Services --> Backend
 Services --> LocalStorage
 
 @enduml
+
+
+@startuml hook_and_context
+
+namespace Root {
+    object index
+}
+
+namespace Contexts {
+    object SampleProvider
+    object SampleContext
+}
+
+namespace Components {
+    object SampleComponent {
+        object useSample
+        object useContext
+        object HTML 
+    }
+    object SampleComponent2 {
+        object useSample2
+        object useContext
+        object HTML
+    }
+    object SampleComponent3 {
+        object useSample3
+        object useContext
+        object HTML
+    }
+}
+
+namespace Hooks {
+    object useSample
+    object useSample2
+    object useSample3
+}
+
+index -down-> SampleComponent
+index -down-> SampleComponent2
+index -down-> SampleComponent3
+index -up-> SampleProvider
+
+SampleProvider -up-> SampleContext
+
+SampleComponent -down-> useSample
+SampleComponent2 -down-> useSample2
+SampleComponent3 -down-> useSample3
+
+SampleComponent -up-> SampleContext
+SampleComponent2 -up-> SampleContext
+SampleComponent3 -up-> SampleContext
+
+@enduml
+
