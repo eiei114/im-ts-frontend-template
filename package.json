@@ -54,6 +54,7 @@
 	"engines": {
 		"node": ">=20.0.0"
 	},
+	"packageManager": "pnpm@9.15.2",
 	"version": "1.0.0",
 	"description": "- 📖 [Remix docs](https://remix.run/docs)",
 	"main": "postcss.config.js",
