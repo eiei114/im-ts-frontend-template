@@ -53,18 +53,21 @@ namespace Contexts {
 
 namespace Components {
     object SampleComponent {
+        ※コントローラー兼ビュー
         object useSample
-        object useContext
+        readonly object useContext
         object HTML 
     }
     object SampleComponent2 {
+        ※コントローラー兼ビュー
         object useSample2
-        object useContext
+        readonly object useContext
         object HTML
     }
     object SampleComponent3 {
+        ※コントローラー兼ビュー
         object useSample3
-        object useContext
+        readonly object useContext
         object HTML
     }
 }
@@ -82,13 +85,17 @@ index -up-> SampleProvider
 
 SampleProvider -up-> SampleContext
 
-SampleComponent -down-> useSample
-SampleComponent2 -down-> useSample2
-SampleComponent3 -down-> useSample3
+SampleComponent -up-> useSample
+SampleComponent2 -up-> useSample2
+SampleComponent3 -up-> useSample3
 
 SampleComponent -up-> SampleContext
 SampleComponent2 -up-> SampleContext
 SampleComponent3 -up-> SampleContext
+
+useSample -up-> SampleContext
+useSample2 -up-> SampleContext
+useSample3 -up-> SampleContext
 
 @enduml
 
