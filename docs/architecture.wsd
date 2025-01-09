@@ -58,6 +58,10 @@ namespace Contexts {
         ※複数のページやコンポーネントで
         ※共有したいデータ管理
     }
+    interface ISampleContext {
+        + SampleValue
+        + SampleCommand()
+    }
 }
 
 namespace Components {
@@ -74,6 +78,10 @@ namespace Hooks {
     object useSample {
         ※ロジック担当
     }
+    interface IuseSample {
+        + SampleValue
+        + SampleCommand()
+    }
 }
 
 namespace Api {
@@ -88,11 +96,13 @@ index -down-> SampleComponent
 index -up-> SampleProvider
 
 SampleProvider -up-> SampleContext
+SampleContext -up-|> ISampleContext
 
-SampleComponent -up-> useSample : 値の読み取りandコマンド実行
-SampleComponent -up-> SampleContext : 値の読み取り
+SampleComponent -up-> IuseSample : 値の読み取りandコマンド実行
+SampleComponent -up-> ISampleContext : 値の読み取り
 
-useSample -up-> SampleContext
+useSample -down-|> IuseSample
+useSample -up-> ISampleContext
 useSample -up-> SampleApi
 
 @enduml
