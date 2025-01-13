@@ -1,5 +1,5 @@
-import { Button } from "baseui/button";
-import { Input } from "baseui/input";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 import { useContext } from "react";
 import { UserSecretContext } from "../contexts/UserSecretContext";
 import { useNameInput } from "../hooks/useNameInput";
@@ -16,10 +16,9 @@ const NameInput = () => {
 					placeholder="Enter your name"
 					value={value}
 					onChange={(e) => handleChange(e.target.value)}
-					error={!!error}
 					disabled={isLoading}
 				/>
-				<Button onClick={handleSubmit} isLoading={isLoading}>
+				<Button onClick={handleSubmit} disabled={isLoading}>
 					Register
 				</Button>
 			</div>

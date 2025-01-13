@@ -1,4 +1,4 @@
-import { Button } from "baseui/button";
+import { Button } from "./ui/button";
 import { useDeleteUserButton } from "../hooks/useDeleteUserButton";
 
 const DeleteUserButton = () => {
@@ -6,7 +6,7 @@ const DeleteUserButton = () => {
 
 	return (
 		<div className="flex flex-col space-y-2">
-			<Button onClick={handleDelete} isLoading={isLoading}>
+			<Button onClick={handleDelete} disabled={isLoading}>
 				ユーザーを削除
 			</Button>
 			{error && <div className="text-red-500">{error}</div>}

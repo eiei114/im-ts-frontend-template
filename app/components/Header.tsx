@@ -1,33 +1,31 @@
-import { Button } from "baseui/button";
-import {
-	ALIGN,
-	HeaderNavigation,
-	StyledNavigationItem,
-	StyledNavigationList,
-} from "baseui/header-navigation";
-import { StyledLink } from "baseui/link";
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
+import { Button } from "./ui/button";
+import {
+	NavigationMenu,
+	NavigationMenuItem,
+	NavigationMenuLink,
+	NavigationMenuList,
+} from "./ui/navigation-menu";
 export default () => {
 	const { toggleDarkMode } = useContext(ThemeContext);
 	return (
-		<HeaderNavigation>
-			<StyledNavigationList $align={ALIGN.left}>
-				<StyledNavigationItem className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
+		<NavigationMenu>
+			<NavigationMenuList>
+				<NavigationMenuItem className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
 					Template App
-				</StyledNavigationItem>
-			</StyledNavigationList>
-			<StyledNavigationList $align={ALIGN.left}>
-				<StyledNavigationItem>
-					<StyledLink href="/">Home</StyledLink>
-				</StyledNavigationItem>
-				<StyledNavigationItem>
-					<StyledLink href="/about">About</StyledLink>
-				</StyledNavigationItem>
-			</StyledNavigationList>
-			<StyledNavigationList $align={ALIGN.center} />
-			<StyledNavigationList $align={ALIGN.right}>
-				<StyledNavigationItem>
+				</NavigationMenuItem>
+			</NavigationMenuList>
+			<NavigationMenuList>
+				<NavigationMenuItem>
+					<NavigationMenuLink href="/">Home</NavigationMenuLink>
+				</NavigationMenuItem>
+				<NavigationMenuItem>
+					<NavigationMenuLink href="/about">About</NavigationMenuLink>
+				</NavigationMenuItem>
+			</NavigationMenuList>
+			<NavigationMenuList>
+				<NavigationMenuItem>
 					<Button
 						onClick={() =>
 							window.open(
@@ -49,8 +47,8 @@ export default () => {
 							/>
 						</div>
 					</Button>
-				</StyledNavigationItem>
-				<StyledNavigationItem>
+				</NavigationMenuItem>
+				<NavigationMenuItem>
 					<Button onClick={toggleDarkMode}>
 						<div className="h-[35px] w-[35px]">
 							<img
@@ -65,8 +63,8 @@ export default () => {
 							/>
 						</div>
 					</Button>
-				</StyledNavigationItem>
-			</StyledNavigationList>
-		</HeaderNavigation>
+				</NavigationMenuItem>
+			</NavigationMenuList>
+		</NavigationMenu>
 	);
 };

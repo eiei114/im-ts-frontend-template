@@ -14,18 +14,21 @@
 		"license": "npx license-checker --production --summary"
 	},
 	"dependencies": {
+		"@radix-ui/react-navigation-menu": "^1.2.3",
+		"@radix-ui/react-slot": "^1.1.1",
 		"@remix-run/node": "^2.15.2",
 		"@remix-run/react": "^2.15.2",
 		"@remix-run/serve": "^2.15.2",
-		"baseui": "^15.0.0",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
 		"husky": "^9.1.7",
 		"isbot": "^5.1.19",
+		"lucide-react": "^0.471.0",
 		"prettier": "^3.4.2",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
-		"styletron-engine-atomic": "^1.6.2",
-		"styletron-engine-monolithic": "^1.0.0",
-		"styletron-react": "^6.1.1"
+		"tailwind-merge": "^2.6.0",
+		"tailwindcss-animate": "^1.0.7"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",

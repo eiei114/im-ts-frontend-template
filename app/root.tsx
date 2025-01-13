@@ -8,13 +8,10 @@ import {
 } from "@remix-run/react";
 
 import "./styles/tailwind.css";
-import { Provider as StyletronProvider } from "styletron-react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import { CustomThemeProvider } from "./contexts/ThemeContext";
 import { UserInformationProvider } from "./contexts/UserInformationContext";
 import { UserSecretProvider } from "./contexts/UserSecretContext";
-import { styletron } from "./styletron";
 export const links: LinksFunction = () => [
 	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
 	{
@@ -38,17 +35,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Links />
 			</head>
 			<body>
-				<StyletronProvider value={styletron}>
-					<CustomThemeProvider>
-						<UserSecretProvider>
-							<UserInformationProvider>
-								<Header />
-								{children}
-								<Footer />
-							</UserInformationProvider>
-						</UserSecretProvider>
-					</CustomThemeProvider>
-				</StyletronProvider>
+					<UserSecretProvider>
+						<UserInformationProvider>
+							<Header />
+							{children}
+							<Footer />
+					</UserInformationProvider>
+				</UserSecretProvider>
 				<ScrollRestoration />
 				<Scripts />
 			</body>

@@ -1,5 +1,5 @@
-import { Button } from "baseui/button";
-import { Input } from "baseui/input";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 import { useNumberInput } from "~/hooks/useNumberInput";
 
 const NumberInput = () => {
@@ -19,8 +19,6 @@ const NumberInput = () => {
 				placeholder="Numbers only"
 				value={value}
 				onChange={(e) => handleChange(e.target.value)}
-				positive={isValid}
-				error={hasError}
 			/>
 			<Button onClick={handleButtonClick}>Send</Button>
 			{hasError && (
