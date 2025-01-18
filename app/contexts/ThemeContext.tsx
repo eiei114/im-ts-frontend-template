@@ -1,4 +1,3 @@
-import { DarkTheme, LightTheme, ThemeProvider } from "baseui";
 import { type ReactNode, createContext, useEffect, useState } from "react";
 
 interface ThemeContextType {
@@ -47,10 +46,8 @@ export const CustomThemeProvider = ({ children }: { children: ReactNode }) => {
 	};
 
 	return (
-		<ThemeProvider theme={darkMode ? DarkTheme : LightTheme}>
-			<ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
-				{children}
-			</ThemeContext.Provider>
-		</ThemeProvider>
+		<ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
+			{children}
+		</ThemeContext.Provider>
 	);
 };
